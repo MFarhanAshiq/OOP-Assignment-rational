@@ -1,0 +1,100 @@
+#include<iostream>
+using namespace std;
+class Rational {
+private:
+	int p;
+	int q;
+	
+public:
+	Rational()
+	{
+		p = q = 1;
+	}
+	Rational(int p, int q)
+	{
+	    reduce(p,q);
+	setNumenator(p);
+	setDenumenator(q);
+		
+	}
+	Rational(const Rational &obj)
+	{
+		this->p = obj.p;
+		this->q = obj.q;
+	}
+void setNumenator(int p)
+    {
+        this->p = p;
+    }
+    int getNumenator()
+    {
+        return p;
+    };
+    bool setDenumenator(int q)
+    {
+        if (q != 0)
+        {
+            this->q = q;
+            return true;
+        }
+        return false;
+    };
+    int getDenumenator()
+    {
+        return q;
+    }
+	int calc(int p, int q)
+	{
+		int num;
+		for (int i = 1;i <= p && i <= q;i++)
+		{
+			if (p % i == 0 && q % i == 0)
+			{
+				num = i;
+
+
+			}
+		};
+		return num;
+
+	};
+
+	void reduce(int &p, int &q)
+	{
+		if (q != 0)
+		{
+			int num = calc(p,q);
+			
+            p = p / num;
+			q = q / num;
+			
+
+            
+		}
+
+	else {
+	cout << "Denominator can not be zero";
+
+
+		}
+	};
+	
+
+
+void printresult()
+{
+	cout << p << "  /  " << q;
+	cout << endl;
+
+};
+
+};
+int main()
+{
+
+int p=4,q=16;
+	Rational ab(4,16);
+    Rational obj1=ab;
+    obj1.printresult();
+	
+};
